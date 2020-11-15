@@ -81,7 +81,7 @@ private final class MentionsArrayMentionBeingEditedTests: XCTestCase {
 private final class MentionsArrayInsertMentionTests: XCTestCase {
     func test_shouldReturnANewMentionsArrayWithAMentionInserted() {
         var mentions: [Mention] = [Mention(range: NSRange(location: 0, length: 10), object: ExampleMention())]
-        let createMentionObject = ExampleMention(name: "Test Mention")
+        let createMentionObject = ExampleMention(nameAttribute: "Test Mention")
         mentions = mentions |> insert([(createMentionObject, NSRange(location: 15, length: 12))])
         XCTAssertEqual(mentions.count, 2)
         XCTAssertEqual(mentions[1], Mention(range: NSRange(location: 15, length: 12), object: createMentionObject))
@@ -107,7 +107,7 @@ private final class MentionsArrayRemoveMentionTests: XCTestCase {
 private final class MentionsArrayAddMentionTests: XCTestCase {
     func test_shouldReturnAnArrayWithASingleItemAdded() {
         var mentions: [Mention] = [Mention(range: NSRange(location: 0, length: 10), object: ExampleMention())]
-        let mentionToAdd = ExampleMention(name: "Added Mention")
+        let mentionToAdd = ExampleMention(nameAttribute: "Added Mention")
         mentions = mentions |> SZMentionsSwift.add(mentionToAdd, spaceAfterMention: false, at: NSRange(location: 0, length: 0))
         XCTAssertEqual(mentions.count, 2)
         XCTAssertEqual(mentions[0], Mention(range: NSRange(location: 13, length: 10), object: ExampleMention()))

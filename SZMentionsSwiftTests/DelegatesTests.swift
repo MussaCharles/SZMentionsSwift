@@ -147,9 +147,9 @@ private final class Delegates: XCTestCase {
 
     func test_shouldAllowForMentionsToBeAddedInAdvance() {
         textView.text = "Testing Steven Zweier and Tiffany get mentioned correctly"
-        let mention = (ExampleMention(name: "Steve") as CreateMention,
+        let mention = (ExampleMention(nameAttribute: "Steve") as CreateMention,
                        NSRange(location: 8, length: 13))
-        let mention2 = (ExampleMention(name: "Tiff") as CreateMention,
+        let mention2 = (ExampleMention(nameAttribute: "Tiff") as CreateMention,
                         NSRange(location: 26, length: 7))
         let insertMentions = [mention, mention2]
         mentionsListener.insertExistingMentions(insertMentions)
@@ -164,7 +164,7 @@ private final class Delegates: XCTestCase {
 
     func test_shouldAllowForMentionsToBeAddedInAdvance_withEmoji() {
         textView.text = "test 🦅 Asim test"
-        let mention = (ExampleMention(name: "Asim") as CreateMention,
+        let mention = (ExampleMention(nameAttribute: "Asim") as CreateMention,
                        NSRange(location: 8, length: 4))
         let insertMentions: [(CreateMention, NSRange)] = [mention]
         mentionsListener.insertExistingMentions(insertMentions)

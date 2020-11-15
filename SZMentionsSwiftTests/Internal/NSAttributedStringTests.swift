@@ -50,7 +50,7 @@ private final class NSAttributedStringTests: XCTestCase {
     func test_shouldInsertExistingMentions() {
         var attributedText = NSAttributedString(string: "Test Steven Zweier")
         (attributedText, _) = attributedText
-            |> apply(mentionAttributesClosure(ExampleMention(name: "Steven Zweier")), range: NSRange(location: 5, length: 13))
+            |> apply(mentionAttributesClosure(ExampleMention(nameAttribute: "Steven Zweier")), range: NSRange(location: 5, length: 13))
 
         XCTAssertEqual(attributedText.backgroundColor(at: 5), .red)
         XCTAssertEqual(attributedText.foregroundColor(at: 5), .blue)
@@ -58,7 +58,7 @@ private final class NSAttributedStringTests: XCTestCase {
 
     func test_shouldAddMention() {
         var attributedText = NSAttributedString(string: "Test @ste")
-        (attributedText, _) = attributedText |> SZMentionsSwift.add(ExampleMention(name: "Steven Zweier"),
+        (attributedText, _) = attributedText |> SZMentionsSwift.add(ExampleMention(nameAttribute: "Steven Zweier"),
                                                                     spaceAfterMention: false,
                                                                     at: NSRange(location: 5, length: 4),
                                                                     with: mentionAttributesClosure)

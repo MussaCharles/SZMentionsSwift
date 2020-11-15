@@ -91,7 +91,7 @@ internal func add(_ mention: CreateMention,
     -> (NSAttributedString) -> (NSAttributedString, NSRange) {
     return { string in
         var attributedText = string
-        let adjustedRange = range.adjustLength(for: mention.name)
+        let adjustedRange = range.adjustLength(for: mention.nameAttribute)
         var selectedRange: NSRange
         (attributedText, selectedRange) = attributedText
             |> replace(charactersIn: range, with: mention.mentionName(with: spaceAfterMention))

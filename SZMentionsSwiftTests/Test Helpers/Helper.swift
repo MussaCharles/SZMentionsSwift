@@ -8,7 +8,7 @@ extension NSRange {
 }
 
 struct ExampleMention: CreateMention {
-    var name = ""
+    var nameAttribute = ""
 }
 
 enum TextUpdate {
@@ -43,6 +43,6 @@ func update(text: String, type: TextUpdate, at range: NSRange? = nil, on listene
 }
 
 @discardableResult func addMention(named name: String, on listener: MentionListener) -> Bool {
-    let mention = ExampleMention(name: name)
+    let mention = ExampleMention(nameAttribute: name)
     return listener.addMention(mention)
 }

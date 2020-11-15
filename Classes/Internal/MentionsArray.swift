@@ -78,7 +78,7 @@ internal func remove(_ mentionsToRemove: [Mention]) -> ([Mention]) -> [Mention] 
  */
 internal func add(_ mention: CreateMention, spaceAfterMention: Bool, at range: NSRange) -> ([Mention]) -> [Mention] {
     return { mentions in
-        let adjustedRange = range.adjustLength(for: mention.name)
+        let adjustedRange = range.adjustLength(for: mention.nameAttribute)
         return mentions
             |> adjusted(forTextChangeAt: range, text: mention.mentionName(with: spaceAfterMention))
             >>> insert([(mention, adjustedRange)])
